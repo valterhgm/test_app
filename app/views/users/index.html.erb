@@ -1,0 +1,16 @@
+
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Username</th>
+		<th>Number of login fails</th>
+	</tr>
+	<% @users.each do |u| %>
+		<tr>
+			<td><%= u.id %></td>
+			<td><%= u.username %></td>
+			<td><%= u.login_fail_count %></td>
+		</tr>
+	<% end %>
+</table>
+<%= link_to "Log Out", {controller: :sessions, action: :destroy, id: "session"}, method: :delete %>
