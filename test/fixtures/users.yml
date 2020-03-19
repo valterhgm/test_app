@@ -2,10 +2,10 @@
 
 one:
   username: MyString
-  password_digest: MyString
+  password: MyString
   login_fail_count: 1
 
 two:
   username: MyString
-  password_digest: MyString
+  password: MyString
   login_fail_count: 1

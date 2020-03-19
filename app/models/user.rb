@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-	has_secure_password
 	validates :username, uniqueness: true
 	validates :username, length: { in: 2..10 }
 	validates :password, length: { in: 3..6 }
@@ -21,6 +20,10 @@ class User < ApplicationRecord
 
 	def login_tries_left
 		3 - login_fail_count
+	end
+
+	def authenticate given_password
+		given_password == password
 	end
 
 

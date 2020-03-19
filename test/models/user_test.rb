@@ -65,7 +65,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user has secure password" do
-  	assert_respond_to @user, :password_digest
+  	assert_respond_to @user, :password
    	assert_respond_to @user, :authenticate
   end
 

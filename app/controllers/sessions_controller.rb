@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 			if user.authenticate(params[:password]) && !user.user_login_lock
 				user.reset_login_fail_count
 				session[:user] ||= user.id if user.present?
-				redirect_to users_path controller: :users, action: :index, message: "User #{user.username} succesfully logged in."
+				redirect_to users_path
 			else
 				login_fail user
 			end
@@ -19,17 +19,17 @@ class SessionsController < ApplicationController
 
 	def destroy
 		session.delete :user
-		redirect_to controller: :sessions, action: :new, message: "Succesfully Logged Out"	
+		redirect_to controller: :sessions, action: :new, message: "Succesfully Logged Out"
 	end
 
 	private
 
 	def login_fail user
 		if user.user_login_lock
-			redirect_to controller: :sessions,action: :new, message: "User #{user.username} is locked."
+			redirect_to controller: :sessions, action: :new, message: "User #{user.username} is locked."
 		else
 			user.login_fail_increment
-			redirect_to controller: :sessions,action: :new, message: "Wrong password. You have #{user.login_tries_left} tries left."
+			redirect_to controller: :sessions, action: :new, message: "Wrong password. You have #{user.login_tries_left} tries left."
 		end
 	end
 

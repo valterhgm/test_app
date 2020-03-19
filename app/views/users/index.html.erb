@@ -1,16 +1,21 @@
+<% if current_user.present? %>
 
-<table>
-	<tr>
-		<th>ID</th>
-		<th>Username</th>
-		<th>Number of login fails</th>
-	</tr>
-	<% @users.each do |u| %>
-		<tr>
-			<td><%= u.id %></td>
-			<td><%= u.username %></td>
-			<td><%= u.login_fail_count %></td>
-		</tr>
-	<% end %>
-</table>
-<%= link_to "Log Out", {controller: :sessions, action: :destroy, id: "session"}, method: :delete %>
+  <h1><%= "User #{ current_user.username } logged in!"%></h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Number of login fails</th>
+      </tr>
+      <% @users.each do |u| %>
+        <tr>
+          <td><%= u.id %></td>
+          <td><%= u.username %></td>
+          <td><%= u.login_fail_count %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to "Log Out", {controller: :sessions, action: :destroy, id: "session"}, method: :delete %>
+  <% else %>
+  <h1>No user is currently logged in!</h1>
+  <%end %>
