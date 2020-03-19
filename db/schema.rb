@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_231628) do
+ActiveRecord::Schema.define(version: 2019_10_09_194813) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.integer "login_fail_count", default: 0
-    t.boolean "user_login_lock", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "user_login_lock", default: false
   end
 
 end

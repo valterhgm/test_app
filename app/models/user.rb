@@ -23,7 +23,7 @@ class User < ApplicationRecord
 	end
 
 	def authenticate given_password
-		given_password == password
+		given_password == password_digest
 	end
 
 

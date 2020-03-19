@@ -10,11 +10,11 @@
   </head>
 
   <body>
-    <% if params[:message].present?%>
+    <% flash.each do |type, msg| %>
       <div>
-        <%= params[:message] %>
-      </div><br/>
-    <%end%>
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
