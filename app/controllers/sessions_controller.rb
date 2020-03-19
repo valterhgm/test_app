@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+	skip_before_action :verify_user_authentication, only: [:new,:create]
+	
 	def new;end
 
 	def create
