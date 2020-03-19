@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :user_auth
+	before_action :verify_user_authentication
 
 	def index
 		@users = User.all
@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
 	private
 
-	def user_auth
+	def verify_user_authentication
 		unless session[:user].present?
 			redirect_to new_session_path, notice: "Please Log in"
 		end

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 				login_fail user
 			end
 		else
-			redirect_to controller: :sessions, action: :new, message: "No username #{params[:username]}."
+			redirect_to new_session_path, notice: "idjid"
 		end
 	end
 
@@ -30,7 +30,6 @@ class SessionsController < ApplicationController
 		else
 			user.login_fail_increment
 			redirect_to new_session_path, notice: "Wrong password. You have #{user.login_tries_left} tries left."
-			#redirect_to controller: :sessions, action: :new, message: "Wrong password. You have #{user.login_tries_left} tries left."
 		end
 	end
 

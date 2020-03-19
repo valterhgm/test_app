@@ -4,7 +4,7 @@ class User < ApplicationRecord
 	validates :password, length: { in: 3..6 }
 
 	def login_fail_increment
-		increment!(:login_fail_count, 1)
+		increment! :login_fail_count, 1
 		if login_fail_count > 2
 			login_lock
 		end
@@ -23,8 +23,7 @@ class User < ApplicationRecord
 	end
 
 	def authenticate given_password
-		given_password == password_digest
+		given_password == password
 	end
-
-
+	
 end
